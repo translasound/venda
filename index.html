@@ -12,82 +12,122 @@
       background: #f5f7fa;
       color: #333;
       line-height: 1.6;
+      text-align: center;
+      position: relative;
+      min-height: 100vh;
+      padding-bottom: 140px;
     }
-
     header {
       background: #0a9396;
       color: white;
       padding: 30px 20px;
-      text-align: center;
     }
-
     header h1 {
       font-size: 2rem;
       font-weight: 700;
     }
-
     nav {
       margin-top: 10px;
     }
-
     nav a {
       color: white;
       text-decoration: none;
       margin: 0 10px;
       font-weight: 600;
     }
-
     .container {
       max-width: 1100px;
       margin: 40px auto;
       padding: 0 20px;
     }
-
     .product {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
       background: white;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.05);
       overflow: hidden;
-    }
-
-    .product img {
-      width: 100%;
-      max-height: 500px;
-      object-fit: cover;
-      flex: 1 1 400px;
-    }
-
-    .details {
-      flex: 1 1 500px;
       padding: 30px;
     }
-
+    .info-box {
+      background: #e0f7f4;
+      border-radius: 12px;
+      padding: 30px;
+      width: 100%;
+      max-width: 600px;
+      margin-bottom: 30px;
+    }
+    .info-box h3 {
+      font-size: 1.5rem;
+      color: #0a9396;
+      margin-bottom: 15px;
+    }
+    .info-box p {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+    .details {
+      max-width: 600px;
+      text-align: left;
+      padding: 40px 20px;        /* Aumentado padding interno */
+      margin-bottom: 40px;       /* Espaço antes do footer */
+    }
     .details h2 {
       font-size: 2rem;
       color: #0a9396;
       margin-bottom: 20px;
+      text-align: center;
     }
-
-    .price {
-      font-size: 1.5rem;
+    .price-box {
+      margin: 40px 0;            /* Dobrado o margin vertical */
+      text-align: center;
+      position: relative;
+      display: inline-block;
+      padding: 20px;             /* Padding extra ao redor do box */
+      border-radius: 8px;
+      background: #fff5f5;
+    }
+    .price-box .tag {
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ee6c4d;
+      color: white;
+      padding: 8px 16px;
+      font-weight: 700;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+    .price-box .original-price {
+      font-size: 1.1rem;
+      color: #888;
+      text-decoration: line-through;
+      margin-bottom: 12px;
+    }
+    .price-box .discounted-price {
+      font-size: 2.2rem;
       color: #ee6c4d;
       font-weight: 700;
-      margin: 20px 0;
+      margin-bottom: 12px;
     }
-
+    .price-box .offer-text {
+      font-size: 1rem;
+      color: #0a9396;
+      font-weight: 600;
+      margin-top: 6px;
+    }
     .features {
       list-style: none;
       padding-left: 0;
+      margin-top: 10px;
     }
-
     .features li {
       margin-bottom: 10px;
       position: relative;
       padding-left: 24px;
     }
-
     .features li::before {
       content: "✔";
       position: absolute;
@@ -95,36 +135,65 @@
       color: #0a9396;
       font-weight: bold;
     }
-
     .btn {
       background: #0a9396;
       color: white;
-      padding: 15px 25px;
-      font-size: 1rem;
+      padding: 18px 30px;        /* Botão maior para espaçar */
+      font-size: 1.1rem;
       font-weight: 600;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
-      margin-top: 20px;
+      margin-top: 30px;          /* Maior distância do price-box */
+      margin-bottom: 30px;       /* Espaço extra antes do rodapé */
       text-decoration: none;
       display: inline-block;
+      transition: background 0.3s ease;
     }
-
     .btn:hover {
       background: #007a82;
     }
-
     footer {
       background: #0a9396;
       color: white;
       text-align: center;
-      padding: 20px;
-      margin-top: 60px;
+      padding: 40px 20px;
+      font-size: 1rem;
+      line-height: 1.4;
     }
-
+    .contato-lateral {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: #0a9396;
+      color: white;
+      padding: 30px 25px;        /* Mais espaçamento */
+      border-radius: 10px;
+      font-size: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      text-align: left;
+      z-index: 1000;
+      max-width: 240px;          /* Maior largura */
+    }
+    .contato-lateral p {
+      margin-bottom: 12px;       /* Mais espaço entre linhas */
+    }
     @media (max-width: 768px) {
-      .product {
-        flex-direction: column;
+      .product, .info-box, .details {
+        padding: 20px;
+      }
+      .details {
+        text-align: center;
+      }
+      .features {
+        text-align: left;
+      }
+      .contato-lateral {
+        max-width: 90vw;
+        right: 10px;
+        bottom: 10px;
+        font-size: 0.9rem;
+        padding: 20px;
       }
     }
   </style>
@@ -143,7 +212,15 @@
 
   <div class="container">
     <section id="produto" class="product">
-      <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1a5?auto=format&fit=crop&w=800&q=80" alt="Fone TranslaSound">
+
+      <div class="info-box">
+        <h3>Conecte-se ao mundo</h3>
+        <p>✔ Traduza em tempo real</p>
+        <p>✔ Converse com qualquer pessoa</p>
+        <p>✔ Leve, confortável e inteligente</p>
+        <p>✔ Use com apenas um toque</p>
+      </div>
+
       <div class="details">
         <h2>Fone Tradutor TranslaSound</h2>
         <p>Tradução instantânea em mais de 50 idiomas direto no seu ouvido. Ideal para viagens, negócios e conversas do dia a dia.</p>
@@ -157,7 +234,13 @@
           <li>Design ergonômico e discreto</li>
         </ul>
 
-        <div class="price">R$ 899,00</div>
+        <div class="price-box">
+          <div class="tag">30% OFF</div>
+          <div class="original-price">R$ 1.299,00</div>
+          <div class="discounted-price">R$ 899,00</div>
+          <div class="offer-text">Oferta por tempo limitado!</div>
+        </div>
+
         <a href="#" class="btn" id="comprar" onclick="alert('Loja de demonstração. Compras ainda não disponíveis.'); return false;">Comprar Agora</a>
       </div>
     </section>
@@ -167,6 +250,13 @@
     <p>Contato: contato@translasound.com | Instagram: @translasound</p>
     <p>&copy; 2025 TranslaSound. Todos os direitos reservados.</p>
   </footer>
+
+  <div class="contato-lateral">
+    <p><strong>Contato:</strong></p>
+    <p>📞 9999999999</p>
+    <p>✉️ contato@translasound.com</p>
+    <p>📷 @translasound</p>
+  </div>
 
 </body>
 </html>
